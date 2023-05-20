@@ -165,3 +165,37 @@ for ii in P:
 
 print(f"Все варианты костюмов у юноши : {kost_ob}")
 print(f"Общее количество костюв : {len(kost_ob)}")
+
+vopr = int(input('Выберите какой костюм хочет надеть юноша,Не дорогой - введите 1 ; Средний - 2 ; Дорогой - 3 : '))
+def st():
+    deshP = p//2
+    deshG = g//2
+    deshR = r//2
+    deshB = b//2
+    count = 0
+    SR = []
+    DRG = []
+    DESH = []
+    for i in kost_ob:
+        if str(deshP) in i[0]:
+           count += 1
+        elif str(deshG) in i[1]:
+           count += 1
+        elif str(deshR) in i[2]:
+           count += 1
+        elif str(deshB) in i[3]:
+           count += 1
+        if count == 2:
+            SR.append(i)
+        elif count < 2:
+            DRG.append(i)
+        elif count > 2:
+            DESH.append(i)
+    if vopr == 1:
+        return (DESH)       
+    elif vopr == 2:
+        return SR
+    elif vopr == 3:
+        return DRG 
+print(st())
+        
