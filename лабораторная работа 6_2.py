@@ -130,16 +130,21 @@ all_costum()
 
         
 #-----------------Целевая функция---------------------------
+#-----------------Целевая функция---------------------------
 def price():
     count = 0
     for i in ALL:
         for j in i:
-            if 1<=int(j[-1])<=5:
-                count += randint(5,15)
-            elif 5<=int(j[-1])<=15:
-                count += randint(15,25)
+            if j[-1].isdigit() == True:
+                if 1<=int(j[-1])<=5:
+                    count += randint(5,15)
+                elif 5<=int(j[-1])<=15:
+                    count += randint(15,25)
+                else:
+                    count += randint(25,50)
+                
             else:
-                count += randint(25,50)
-        print(*i,' ',f'цена костюма {count}$',end = '\n')
-        count = 0   
+                count += 0
+            print(*i,' ',f'цена костюма {count}$',end = '\n')
+            count = 0   
 price()
