@@ -1,201 +1,145 @@
 #усложнить написанную программу, введя по своему усмотрению в условие минимум одно ограничение на характеристики объектов и целевую функцию для оптимизации решения.
-print('Юноша хранит вещи в разных шкафах,и в каждом шкафе его вещи разделены на 3 части по цветам:черный,белый,синий')
-p , g ,r , b = int(input('Введите количество пиджаков у юноши в гардеробе: ')),int(input('Введите количество галстуков у юноши в гардеробе: ')),int(input('Введите количество рубашек у юноши в гардеробе: ')),int(input('Введите количество брюк у юноши в гардеробе: '))
-quest_P = int(input('Выберете цвет пиджака,если хотите черный,введите цифру 1,если белый-цифру 2,синий-цифру 3: '))
-quest_G = int(input('Выберете цвет галстука,если хотите черный,введите цифру 1,если белый-цифру 2,синий-цифру 3: '))
-quest_R = int(input('Выберете цвет рубашки,если хотите черный,введите цифру 1,если белый-цифру 2,синий-цифру 3: '))
-quest_B = int(input('Выберете цвет брюк,если хотите черный,введите цифру 1,если белый-цифру 2,синий-цифру 3: '))
 
-P = []
-G = []
-R = []
-B = []
-if p >= 3:
-    if quest_P == 1:
-        for i in range(1,(p//3)+1):
-            P.append(f'Пиджак{(i)}')  
-    elif quest_P == 2:
-        if p%3 == 0:
-            for i in range((p//3)+1,((p-(p//3)))+1):
-                P.append(f'Пиджак{(i)}') 
+from random import *
+JAKET = []
+def jaket():
+    lot_jak ,quest_Jak = int(input('Введите кол-во пиджаков: ')),int(input("Выберите цвет: 1-черный,2-синий,3-белый "))
+    black_jak =  lot_jak//3 #1
+    blue_jak = (lot_jak - black_jak)//2 #2
+    white_jak = (lot_jak - black_jak)-blue_jak  #3
+    if quest_Jak == 1:
+        for i in range(1,black_jak+1):
+            JAKET.append(f'Пиджак{i}')
+        if lot_jak == 1 or lot_jak == 2:
+            JAKET.append(f"Пиджак1")
+    elif quest_Jak == 2:
+        if lot_jak == 1:
+            JAKET.append('Cиний пиджак отсутствует')
+        if lot_jak == 2:
+            JAKET.append('Пиджак 2')
         else:
-            for i in range((p//3)+1,((p-(p//3)))):   
-                P.append(f'Пиджак{(i)}')  
-    elif quest_P == 3:
-        if p%3 == 0:
-            for i in range((((p-(p//3)))+1),p+1):
-                P.append(f'Пиджак{(i)}') 
-        else:
-            for i in range(((p-(p//3))),p+1):
-                P.append(f'Пиджак{(i)}') 
-elif p == 2:
-    if quest_P == 1:
-        P.append('Пиджак 1')
-    elif quest_P == 2:
-        P.append('Пиджак 2')
-    elif quest_P == 3:
-        print('Синего пиджака у юноши нет.')
-elif p == 1:
-    if quest_P == 1:
-        P.append('Пиджак 1')
-    elif  quest_P == 2:
-        print('Белого пиджака у юноши нет.')
-    elif  quest_P == 3:
-        print('Синего пиджака у юноши нет.')
-
-if g >= 3:
-    if quest_G == 1:
-        for i in range(1,(g//3)+1):
-            G.append(f'Галстук{(i)}')  
-    elif quest_G == 2:
-        if g%3 == 0:
-            for i in range((g//3)+1,((g-(g//3)))+1):
-                G.append(f'Галстук{(i)}') 
-        else:
-            for i in range((g//3)+1,((g-(g//3)))):   
-                G.append(f'Галстук{(i)}')  
-    elif quest_G == 3:
-        if g%3 == 0:
-            for i in range((((g-(g//3)))+1),g+1):
-                G.append(f'Галстук{(i)}')  
-        else:
-            for i in range(((g-(g//3))),g+1):
-                G.append(f'Галстук{(i)}') 
-elif g == 2:
-    if quest_G == 1:
-        G.append('Галстук 1')
-    elif quest_G == 2:
-        G.append('Галстук 2')
-    elif quest_G == 3:
-        print('Синего галстука у юноши нет.')
-elif g == 1:
-    if quest_G == 1:
-        G.append('Галстук 1')
-    elif quest_G == 2:
-        print('Белого галстука у юноши нет.')
-    elif quest_G== 3:
-        print('Синего галстука у юноши нет.')
-
-
-
-if r >= 3:
-    if quest_R == 1:
-        for i in range(1,(r//3)+1):
-            R.append(f'Рубашка{(i)}')  
-    elif quest_R == 2:
-        if r%3 == 0:
-            for i in range((r//3)+1,((r-(r//3)))+1):
-                R.append(f'Рубашка{(i)}') 
-        else:
-            for i in range((r//3)+1,((r-(r//3)))):   
-                R.append(f'Рубашка{(i)}')  
-    elif quest_R == 3:
-        if r%3 == 0:
-            for i in range((((r-(r//3)))+1),r+1):
-                R.append(f'Рубашка{(i)}') 
-        else:
-            for i in range(((r-(r//3))),r+1):
-                P.append(f'Рубашка{(i)}') 
-elif r == 2:
-    if quest_R == 1:
-        R.append('Рубашка 1')
-    elif quest_R == 2:
-        R.append('Рубашка 2')
-    elif quest_R == 3:
-        print('Синей рубашки у юноши нет.')
-elif r == 1:
-    if quest_R == 1:
-        R.append('Рубашка 1')
-    elif quest_R == 2:
-        print('Белой рубашки у юноши нет.')
-    elif quest_R== 3:
-        print('Синей рубашки у юноши нет.')
-
-
-
-if b >= 3:
-    if quest_B == 1:
-        for i in range(1,(b//3)+1):
-            B.append(f'Брюки{(i)}')  
-    elif quest_B == 2:
-        if b%3 == 0:
-            for i in range((b//3)+1,((b-(b//3)))+1):
-                B.append(f'Брюки{(i)}') 
-        else:
-            for i in range((b//3)+1,((b-(b//3)))):   
-                B.append(f'Брюки{(i)}')  
-    elif quest_B == 3:
-        if b%3 == 0:
-            for i in range((((b-(b//3)))+1),b+1):
-                B.append(f'Брюки{(i)}') 
-        else:
-            for i in range(((b-(b//3))),b+1):
-                B.append(f'Брюки{(i)}') 
-
-elif b == 2:
-    if quest_B == 1:
-        B.append('Брюки 1')
-    elif quest_B == 2:
-        B.append('Брюки 2')
-    elif quest_B == 3:
-        print('Синих брюк у юноши нет.')
-elif b == 1:
-    if quest_B == 1:
-        B.append('Брюки 1')
-    elif quest_B == 2:
-        print('Белых брюк у юноши нет.')
-    elif quest_B== 3:
-        print('Синих брюк у юноши нет.')
-
-
-#------------------------------------------------
-
-kost = []
-kost_ob = []
-for ii in P:
-    for jj in G:
-        for hh in R:
-            for gg in B:
-                kost.append(ii)
-                kost.append(jj)
-                kost.append(hh)
-                kost.append(gg)
-                kost_ob.append(kost)
-                kost = []
-
-print(f"Все варианты костюмов у юноши : {kost_ob}")
-print(f"Общее количество костюв : {len(kost_ob)}")
-
-vopr = int(input('Выберите какой костюм хочет надеть юноша,Не дорогой - введите 1 ; Средний - 2 ; Дорогой - 3 : '))
-def st():
-    deshP = p//2
-    deshG = g//2
-    deshR = r//2
-    deshB = b//2
-    count = 0
-    SR = []
-    DRG = []
-    DESH = []
-    for i in kost_ob:
-        if str(deshP) in i[0]:
-           count += 1
-        elif str(deshG) in i[1]:
-           count += 1
-        elif str(deshR) in i[2]:
-           count += 1
-        elif str(deshB) in i[3]:
-           count += 1
-        if count == 2:
-            SR.append(i)
-        elif count < 2:
-            DRG.append(i)
-        elif count > 2:
-            DESH.append(i)
-    if vopr == 1:
-        return (DESH)       
-    elif vopr == 2:
-        return SR
-    elif vopr == 3:
-        return DRG 
-print(st())
+            for i in range(black_jak+1,(black_jak+blue_jak)+1):
+                JAKET.append(f'Пиджак{i}')
         
+    elif quest_Jak == 3:
+        if lot_jak == 1 or lot_jak == 2:
+            JAKET.append('Белый пиджак отсутствует')
+        else:
+            for i in range((black_jak+blue_jak)+1,black_jak+blue_jak+white_jak+1):
+                JAKET.append(f'Пиджак{i}')
+TIES = []       
+#galst
+def ties():
+    lot_tie ,quest_Tie = int(input('Введите кол-во галстуков: ')),int(input("Выберите цвет: 1-черный,2-синий,3-белый "))
+    black_tie =  lot_tie//3 #1
+    blue_tie = (lot_tie - black_tie)//2 #2
+    white_tie = (lot_tie - black_tie)-blue_tie  #3
+    if quest_Tie == 1:
+        for i in range(1,black_tie+1):
+            TIES.append(f'Галстук{i}')
+        if lot_tie == 1 or lot_tie == 2:
+            TIES.append(f"Галстук1")
+    elif quest_Tie == 2:
+        if lot_tie == 1:
+            TIES.append('Cиний галстук отсутствует')
+        if lot_tie == 2:
+            TIES.append('Галстук 2')
+        else:
+            for i in range(black_tie+1,(black_tie+blue_tie)+1):
+                TIES.append(f'Галстук{i}')
+            
+    elif quest_Tie == 3:
+        if lot_tie == 1 or lot_tie == 2:
+            TIES.append('Белый галстук отсутствует')
+        else:
+            for i in range((black_tie+blue_tie)+1,black_tie+blue_tie+white_tie+1):
+                TIES.append(f'Галстук{i}')
+ 
+TROU = []
+#bruki
+def trousers():
+    lot_t ,quest_T = int(input('Введите кол-во брюк : ')),int(input("Выберите цвет: 1-черный,2-синий,3-белый "))
+    black_t =  lot_t//3 #1
+    blue_t = (lot_t - black_t)//2 #2
+    white_t = (lot_t - black_t)-blue_t  #3
+    if quest_T == 1:
+        for i in range(1,black_t+1):
+            TROU.append(f'Брюки{i}')
+        if lot_t == 1 or lot_t == 2:
+            TROU.append(f"Брюки1")
+    elif quest_T == 2:
+        if lot_t == 1:
+            TROU.append('Cиние брюки отсутствуют')
+        if lot_t == 2:
+            TROU.append('Брюки 2')
+        else:
+            for i in range(black_t+1,(black_t+blue_t)+1):
+                TROU.append(f'Брюки{i}')
+    elif quest_T == 3:
+        if lot_t == 1 or lot_t == 2:
+            TROU.append('Белые брюки отсутствуют')
+        else:
+            for i in range((black_t+blue_t)+1,black_t+blue_t+white_t+1):
+                TROU.append(f'Брюки{i}')
+SHIR = []    
+#rubashka
+def shirts():
+    lot_t ,quest_T = int(input('Введите кол-во рубашек: ')),int(input("Выберите цвет: 1-черный,2-синий,3-белый "))
+    black_t =  lot_t//3 #1
+    blue_t = (lot_t - black_t)//2 #2
+    white_t = (lot_t - black_t)-blue_t  #3
+    if quest_T == 1:
+        for i in range(1,black_t+1):
+            SHIR.append(f'Рубашка{i}')
+        if lot_t == 1 or lot_t == 2:
+            SHIR.append(f"Рубашка1")
+    elif quest_T == 2:
+        if lot_t == 1:
+            SHIR.append('Cиняя рубашка отсутствуют')
+        if lot_t == 2:
+            SHIR.append('Рубашка 2')
+        else:
+            for i in range(black_t+1,(black_t+blue_t)+1):
+                SHIR.append(f'Рубашка{i}')
+    elif quest_T == 3:
+        if lot_t == 1 or lot_t == 2:
+            SHIR.append('Белая рубашка отсутствуют')
+        else:
+            for i in range((black_t+blue_t)+1,black_t+blue_t+white_t+1):
+                SHIR.append(f'Рубашка{i}')
+ALL = []
+def all_costum():
+    ol = []
+    for i in JAKET:
+        for q in TIES:
+            for w in TROU:
+                for ii in SHIR:
+                    ol.append(i)
+                    ol.append(q)
+                    ol.append(w)
+                    ol.append(ii)
+                    ALL.append(ol)
+                    ol = []
+print('У юноши вещи разделены на три части по цветам,черный,синий и белый')
+jaket()
+ties()
+trousers()
+shirts()
+all_costum()
+
+
+        
+#-----------------Целевая функция---------------------------
+def price():
+    count = 0
+    for i in ALL:
+        for j in i:
+            if 1<=int(j[-1])<=5:
+                count += randint(5,15)
+            elif 5<=int(j[-1])<=15:
+                count += randint(15,25)
+            else:
+                count += randint(25,50)
+        print(*i,' ',f'цена костюма {count}$',end = '\n')
+        count = 0   
+price()
